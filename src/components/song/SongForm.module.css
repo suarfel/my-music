@@ -1,0 +1,59 @@
+.newSong{
+    width: 25rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 1rem; 
+}
+.control{
+    padding-right: 1rem;
+}
+.control label{
+    font-weight: 700;
+    font-size: 1rem;
+    color: #044599;
+}
+.control input{
+    padding-left:1rem;
+    height: 44px;
+    margin:1rem 0;
+    font-size: 1rem;
+    color: #044599;
+    width: 100%;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #e8e0e0;
+}
+.control input:focus{
+    outline-style: none;
+    background-color: rgb(207, 240, 240);
+ }
+
+.newSong h1{
+  margin: auto;
+  color: #044599;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.addSong button{
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 2.5rem;
+    color: white;
+    background-color: #044599;
+    width:100%;
+    border-radius: 12px;
+    border-style: none;
+    padding: 0.5rem;   
+}
+@media(max-width : 550px){
+    .newSong{
+        width : 80%;
+    }
+}
+

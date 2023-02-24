@@ -83,9 +83,7 @@ transform: translateY(14px);
   margin-top: 2rem;
 }
 
-@media(max-width :  920px){
-  
-}
+ 
 
 @media(max-width :  620px){
   .nav li{
