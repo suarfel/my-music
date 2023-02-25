@@ -56,4 +56,39 @@
         width : 80%;
     }
 }
+.invalidControl{
+    padding-right: 1rem;
+}
+.invalidControl label{
+    font-weight: 700;
+    font-size: 1rem;
+    color: #044599;
+}
+.invalidControl input{
+    padding-left:1rem;
+    height: 44px;
+    margin-top:1rem;
+    font-size: 1rem;
+    color: #044599;
+    width: 100%;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgba(185, 16, 16, 0.4);
+}
+.invalidControl input:focus{
+    outline-style: none;
+}
+.formError{
+   padding-left: 0.5rem;
+   color : rgb(233, 69, 69);
+   font-size: small;
+}
+button:disabled,
+button:disabled:hover,
+button:disabled:active{
+cursor: not-allowed;
+background-color:rgba(4,69,153,0.6);
+color: white;
+border-color: #ccc;
+}
 

@@ -1,14 +1,14 @@
 import classes from "./SongItem.module.css";
 import {FaCaretSquareRight } from "react-icons/fa";
 
-const SongItem = () => {
+const SongItem = (props) => {
   return <div className={classes.tracks}>
-    <div className={classes.songGenre}>Pop</div>
-    <div className={classes.songTitle}>Don't Start Now</div>
-    <div className={classes.songSinger}>Dua Lipa</div>
-    <div className={classes.songDuration}>3:03</div>
-    <div className={classes.songPlayIcon}>
-        <FaCaretSquareRight />
+    <div className={classes.songGenre}>{props.genre}</div>
+    <div className={classes.songTitle}>{props.title}</div>
+    <div className={classes.songSinger}>{props.singer}</div>
+    <div className={classes.songDuration}>{props.duration}</div>
+    <div className={classes.songPlayIcon} >
+        <FaCaretSquareRight  />
     </div>
   </div>;
 };

@@ -9,7 +9,7 @@ const NavDrawer = () => {
         <ul>
           <li>
             <NavLink
-              to="/"
+              to="/songs"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -19,7 +19,7 @@ const NavDrawer = () => {
           </li>
           <li>
             <NavLink
-              to="/av"
+              to="/new"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
