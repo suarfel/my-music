@@ -7,7 +7,7 @@
     align-items: left;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     border-radius: 12px;
-    padding: 1rem; 
+    padding: 1rem;
 }
 .control{
     padding-right: 1rem;
@@ -20,7 +20,7 @@
 .control input{
     padding-left:1rem;
     height: 44px;
-    margin:1rem 0;
+    margin:0.7rem 0;
     font-size: 1rem;
     color: #044599;
     width: 100%;
@@ -41,6 +41,7 @@
   margin-bottom: 1rem;
 }
 .addSong button{
+    margin-top: 1rem;
     font-size: 1.5rem;
     font-weight: 700;
     height: 2.5rem;
@@ -67,7 +68,7 @@
 .invalidControl input{
     padding-left:1rem;
     height: 44px;
-    margin-top:1rem;
+    margin-top:0.7rem;
     font-size: 1rem;
     color: #044599;
     width: 100%;

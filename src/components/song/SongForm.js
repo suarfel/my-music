@@ -10,14 +10,46 @@ const SongForm = () => {
     enteredValueIsValid: titleIsValid,
     hasError: titleError,
   } = UserForm((enteredValue) => enteredValue.trim().length > 0);
+  const {
+    enteredValue: enteredSinger,
+    valueBlurHandler: singerBlurHandler,
+    valueChangeHandler: singerChangeHandler,
+    reset: singerReset,
+    enteredValueIsValid: singerIsValid,
+    hasError: singerError,
+  } = UserForm((enteredValue) => enteredValue.trim().length > 0);
+
+  const {
+    enteredValue: enteredGenre,
+    valueBlurHandler: genreBlurHandler,
+    valueChangeHandler: genreChangeHandler,
+    reset: genreReset,
+    enteredValueIsValid: genreIsValid,
+    hasError: genreError,
+  } = UserForm((enteredValue) => enteredValue.trim().length > 0);
+  const {
+    enteredValue: enteredDuration,
+    valueBlurHandler: durationBlurHandler,
+    valueChangeHandler: durationChangeHandler,
+    reset: durationReset,
+    enteredValueIsValid: durationIsValid,
+    hasError: durationError,
+  } = UserForm((enteredValue) => enteredValue > 0);
   let formIsValid = false;
-  if (titleIsValid) {
+  if (titleIsValid && singerIsValid && genreIsValid && durationIsValid) {
     formIsValid = true;
   }
   const addSubmitHandler = (event) => {
     event.preventDefault();
+    console.log(enteredSinger);
     console.log(enteredTitle);
+    console.log(enteredGenre);
+    console.log(enteredDuration);
+    console.log(typeof enteredDuration);
     titleReset();
+    singerReset();
+    genreReset();
+    durationReset();
   };
   return (
     <Layout>
@@ -27,30 +59,61 @@ const SongForm = () => {
           <label htmlFor="title">Title</label>
           <br />
           <input
-            type="text "
+            type="text"
             id="title"
             value={enteredTitle}
             onChange={titleChangeHandler}
             onBlur={titleBlurHandler}
           />
           {titleError && (
-            <div className={classes.formError}>TITLE IS NOT VALID</div>
+            <div className={classes.formError}>TITLE IS EMPTY</div>
           )}
         </div>
-        <div className={classes.control}>
+        <div className={singerError ? classes.invalidControl : classes.control}>
           <label htmlFor="singer">Singer</label>
           <br />
-          <input type="text" id="singer" />
+          <input
+            type="text"
+            id="singer"
+            value={enteredSinger}
+            onChange={singerChangeHandler}
+            onBlur={singerBlurHandler}
+          />
+          {singerError && (
+            <div className={classes.formError}>SINGER IS EMPTY</div>
+          )}
         </div>
-        <div className={classes.control}>
+        <div className={genreError ? classes.invalidControl : classes.control}>
           <label htmlFor="genre">Genre</label>
           <br />
-          <input type="text" id="genre" />
+          <input
+            type="text"
+            id="genre"
+            value={enteredGenre}
+            onChange={genreChangeHandler}
+            onBlur={genreBlurHandler}
+          />
+          {genreError && (
+            <div className={classes.formError}>GENRE IS EMPTY</div>
+          )}
         </div>
-        <div className={classes.control}>
-          <label htmlFor="description">Description</label>
+        <div
+          className={durationError ? classes.invalidControl : classes.control}
+        >
+          <label htmlFor="duration">Duration</label>
           <br />
-          <input type="text" id="description" />
+          <input
+            type="number"
+            min="2"
+            max="9"
+            id="duration"
+            value={enteredDuration}
+            onChange={durationChangeHandler}
+            onBlur={durationBlurHandler}
+          />
+          {durationError && (
+            <div className={classes.formError}>DURATION IS OUT OF LIMIT</div>
+          )}
         </div>
         <div className={classes.addSong}>
           <button disabled={!formIsValid}>Add Song</button>

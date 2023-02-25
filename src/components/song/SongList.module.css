@@ -5,4 +5,10 @@
     flex-wrap: wrap;
     margin: 1rem 1rem;
 }
- 
+.mainPageTitle{
+    display: flex;
+    justify-content: center;
+    color: #044599;
+    font-weight: 700;
+    font-size: 1.5rem;
+}

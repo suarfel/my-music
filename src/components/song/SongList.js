@@ -125,7 +125,10 @@ const SongList = () => {
   });
   return (
     <Layout>
-      <div className={classes.songList}>{songs}</div>
+      <div className={classes.mainPage}>
+        <div className={classes.mainPageTitle}>POPULAR TRACKS</div>
+        <div className={classes.songList}>{songs}</div>
+      </div>
     </Layout>
   );
 };
