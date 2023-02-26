@@ -1,51 +1,54 @@
-const FIREBASE_DOMAIN = '////';
+const FIREBASE_DOMAIN = "https://my-music-fef3d-default-rtdb.firebaseio.com";
 
-export async function getAllQuotes() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/quotes.json`);
+export async function getAllSongs() {
+  const response = await fetch(`${FIREBASE_DOMAIN}/songs.json`);
+
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || 'Could not fetch quotes.');
+    throw new Error(data.message || 'Could not fetch songs.');
   }
 
-  const transformedQuotes = [];
+  const transformedSongs = [];
 
   for (const key in data) {
-    const quoteObj = {
+    const songObj = {
       id: key,
       ...data[key],
     };
 
-    transformedQuotes.push(quoteObj);
+    transformedSongs.push(songObj);
   }
 
-  return transformedQuotes;
+  return transformedSongs;
 }
 
-export async function getSingleQuote(quoteId) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/quotes/${quoteId}.json`);
+export async function getSingleSong(songId) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/songs/${songId}.json`);
   const data = await response.json();
 
   if (!response.ok) {
     throw new Error(data.message || 'Could not fetch quote.');
   }
 
-  const loadedQuote = {
-    id: quoteId,
+  const loadedSong = {
+    id: songId,
     ...data,
   };
 
-  return loadedQuote;
+  return loadedSong;
 }
 
-export async function addQuote(quoteData) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/quotes.json`, {
+export async function addSong(songData) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/songs.json`, {
     method: 'POST',
-    body: JSON.stringify(quoteData),
+    body: JSON.stringify(songData),
     headers: {
       'Content-Type': 'application/json',
     },
+   
   });
+  console.log(response);
   const data = await response.json();
 
   if (!response.ok) {
