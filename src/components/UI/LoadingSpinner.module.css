@@ -1,25 +1,28 @@
+.position{
+    position: fixed;
+    margin :25% 45%;
+}
 .spinner {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #044599;
+  border-color: #044599 transparent #044599 transparent;
+  animation: spinner 1.2s linear infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
   }
-  .spinner:after {
-    content: ' ';
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid #044599;
-    border-color: #044599 transparent #044599 transparent;
-    animation: spinner 1.2s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  @keyframes spinner {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
