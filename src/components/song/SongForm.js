@@ -1,7 +1,8 @@
 import UserForm from "../../hooks/userInput";
 import Layout from "../layout/Layout";
+import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./SongForm.module.css";
-const SongForm = () => {
+const SongForm = (props) => {
   const {
     enteredValue: enteredTitle,
     valueChangeHandler: titleChangeHandler,
@@ -41,11 +42,16 @@ const SongForm = () => {
   }
   const addSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(enteredSinger);
     console.log(enteredTitle);
     console.log(enteredGenre);
     console.log(enteredDuration);
-    console.log(typeof enteredDuration);
+    console.log(enteredSinger);
+    props.onAddSong({
+      title: enteredTitle,
+      genre: enteredGenre,
+      singer: enteredSinger,
+      duration: enteredDuration,
+    });
     titleReset();
     singerReset();
     genreReset();
@@ -54,6 +60,11 @@ const SongForm = () => {
   return (
     <Layout>
       <form onSubmit={addSubmitHandler} className={classes.newSong}>
+      {props.isLoading && (
+          <div className={classes.loading}>
+            <LoadingSpinner />
+          </div>
+        )}
         <h1>Add New Song</h1>
         <div className={titleError ? classes.invalidControl : classes.control}>
           <label htmlFor="title">Title</label>
