@@ -6,6 +6,7 @@ import { getAllSongs } from "../hooks/api";
 import useHttp from "../hooks/user-http";
 import NoSongsFound from "../components/song/NoSongsFound";
 import Layout from "../components/layout/Layout";
+import ErrorPage from "../components/song/ErrorPage";
 
 const AllSongs = () => {
   const {
@@ -18,16 +19,13 @@ const AllSongs = () => {
   useEffect(() => {
     sendRequest();
   }, [sendRequest]);
-  console.log(loadedSongs);
   if (status === "pending") {
     return (
-      <div className="centered">
         <LoadingSpinner />
-      </div>
     );
   }
   if (error) {
-    return <div className="centered focused">{error}</div>;
+    return  <ErrorPage  error={error}/>;
   }
   if (status === "completed" && (!loadedSongs || loadedSongs.length === 0)) {
         return (<Layout><NoSongsFound /> </Layout>);

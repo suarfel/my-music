@@ -1,6 +1,9 @@
 .position{
-    position: fixed;
-    margin :25% 45%;
+  margin:20rem auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .spinner {
   display: inline-block;
