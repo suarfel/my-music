@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { deleteSong } from "../../hooks/api";
 import useHttp from "../../hooks/user-http";
 import Layout from "../layout/Layout";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./SongDetail.module.css";
 const SongDetail = (props) => {
-  // const params = useParams();
   const navigate = useNavigate();
   const {sendRequest,status} = useHttp(deleteSong);
 
@@ -19,7 +18,8 @@ const SongDetail = (props) => {
  
   return (
     <Layout>
-      {status == "pending" && <LoadingSpinner />}
+      {status === "pending" && <LoadingSpinner />}
+      {!(status === "pending")  && 
       <div className={classes.songDetail}>
         <div className={classes.songDetailDesciption}>
           <div className={classes.songDetailTitle}>
@@ -42,7 +42,7 @@ const SongDetail = (props) => {
         <div className={classes.deleteButton} >
            <button id={props.id} onClick={() =>  sendRequest(props.id)}>Delete Song </button>
         </div>
-      </div>
+      </div>}
     </Layout>
   );
 };

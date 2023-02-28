@@ -1,8 +1,10 @@
 import UserForm from "../../hooks/userInput";
+import { useState } from "react";
 import Layout from "../layout/Layout";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./SongForm.module.css";
 const SongForm = (props) => {
+  const [genre,setGenre] = useState("pop");
   const {
     enteredValue: enteredTitle,
     valueChangeHandler: titleChangeHandler,
@@ -10,7 +12,7 @@ const SongForm = (props) => {
     reset: titleReset,
     enteredValueIsValid: titleIsValid,
     hasError: titleError,
-  } = UserForm((enteredValue) => enteredValue.trim().length > 0);
+  } = UserForm((enteredValue) => 11 > enteredValue.trim().length > 0);
   const {
     enteredValue: enteredSinger,
     valueBlurHandler: singerBlurHandler,
@@ -18,16 +20,8 @@ const SongForm = (props) => {
     reset: singerReset,
     enteredValueIsValid: singerIsValid,
     hasError: singerError,
-  } = UserForm((enteredValue) => enteredValue.trim().length > 0);
+  } = UserForm((enteredValue) => 11 > enteredValue.trim().length > 0);
 
-  const {
-    enteredValue: enteredGenre,
-    valueBlurHandler: genreBlurHandler,
-    valueChangeHandler: genreChangeHandler,
-    reset: genreReset,
-    enteredValueIsValid: genreIsValid,
-    hasError: genreError,
-  } = UserForm((enteredValue) => enteredValue.trim().length > 0);
   const {
     enteredValue: enteredDuration,
     valueBlurHandler: durationBlurHandler,
@@ -37,24 +31,28 @@ const SongForm = (props) => {
     hasError: durationError,
   } = UserForm((enteredValue) => enteredValue > 0);
   let formIsValid = false;
-  if (titleIsValid && singerIsValid && genreIsValid && durationIsValid) {
+  if (titleIsValid && singerIsValid  && durationIsValid) {
     formIsValid = true;
   }
+
+  const genreChangeHandler = (event) => {
+    setGenre(event.target.value);
+  }
+
   const addSubmitHandler = (event) => {
     event.preventDefault();
     console.log(enteredTitle);
-    console.log(enteredGenre);
+    console.log(genre);
     console.log(enteredDuration);
     console.log(enteredSinger);
     props.onAddSong({
       title: enteredTitle,
-      genre: enteredGenre,
+      genre: genre,
       singer: enteredSinger,
       duration: enteredDuration,
     });
     titleReset();
     singerReset();
-    genreReset();
     durationReset();
   };
   return (
@@ -76,8 +74,11 @@ const SongForm = (props) => {
             onChange={titleChangeHandler}
             onBlur={titleBlurHandler}
           />
-          {titleError && (
+          {titleError && enteredTitle.trim().length === 0  && (
             <div className={classes.formError}>TITLE IS EMPTY</div>
+          )}
+           {titleError && enteredTitle.trim().length > 10  && (
+            <div className={classes.formError}>TITLE MUST BE SHORT</div>
           )}
         </div>
         <div className={singerError ? classes.invalidControl : classes.control}>
@@ -90,23 +91,26 @@ const SongForm = (props) => {
             onChange={singerChangeHandler}
             onBlur={singerBlurHandler}
           />
-          {singerError && (
-            <div className={classes.formError}>SINGER IS EMPTY</div>
+          {singerError && enteredSinger.trim().length === 0 && (
+            <div className={classes.formError}>SINGER NAME IS EMPTY</div>
+          )}
+          {singerError && enteredSinger.trim().length > 10 && (
+            <div className={classes.formError}>SINGER NAME MUST BE SHORT</div>
           )}
         </div>
-        <div className={genreError ? classes.invalidControl : classes.control}>
+        <div className={classes.selectControl}>
           <label htmlFor="genre">Genre</label>
           <br />
-          <input
-            type="text"
-            id="genre"
-            value={enteredGenre}
-            onChange={genreChangeHandler}
-            onBlur={genreBlurHandler}
-          />
-          {genreError && (
-            <div className={classes.formError}>GENRE IS EMPTY</div>
-          )}
+          <select name="genre" id="genre" value={genre} onChange={genreChangeHandler}  >
+            <option value="POP">POP</option>
+            <option value="ROCK">ROCK</option>
+            <option value="COUNTRY">COUNTRY</option>
+            <option value="REGGAE">REGGAE</option>
+            <option value="FUNK">FUNK</option>
+            <option value="JAZZ">JAZZ</option>
+            <option value="DISCO">DISCO</option>
+            <option value="ELECTONIC">ELECTONIC</option>
+          </select> 
         </div>
         <div
           className={durationError ? classes.invalidControl : classes.control}

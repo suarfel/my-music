@@ -20,7 +20,7 @@
   color: #044599;
   font-weight: 800;
   font-size: 1rem;
-  text-decoration: none;
+  border-style: none;
   background-color: white;
 }
 .deleteButton button:hover {

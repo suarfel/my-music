@@ -15,6 +15,7 @@ const NewSong = () => {
   });
 
   const addSongHandler = (song) => {
+    console.log(song);
     sendRequest(song);
   };
   return (

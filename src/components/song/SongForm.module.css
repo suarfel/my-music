@@ -20,6 +20,7 @@
   }
 .control{
     padding-right: 1rem;
+    border-style: none;
 }
 .control label{
     font-weight: 700;
@@ -37,10 +38,29 @@
     border-style: none;
     background-color: #e8e0e0;
 }
+.selectControl{
+    border-style: none; 
+}
+.selectControl select{
+    padding-left:1rem;
+    height: 44px;
+    margin:0.7rem 0;
+    font-size: 1rem;
+    color: #044599;
+    width: 100%;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #e8e0e0; 
+}
+ .selectControl select:focus{
+    outline-style: none;
+    background-color: rgb(207, 240, 240);
+ }
 .control input:focus{
     outline-style: none;
     background-color: rgb(207, 240, 240);
  }
+
 
 .newSong h1{
   margin: auto;
