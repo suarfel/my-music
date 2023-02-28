@@ -59,12 +59,12 @@ const SongForm = (props) => {
   };
   return (
     <Layout>
-      <form onSubmit={addSubmitHandler} className={classes.newSong}>
       {props.isLoading && (
-          <div className={classes.loading}>
-            <LoadingSpinner />
-          </div>
-        )}
+        <div className={classes.loading}>
+          <LoadingSpinner />
+        </div>
+      )}
+      <form onSubmit={addSubmitHandler} className={classes.newSong}>
         <h1>Add New Song</h1>
         <div className={titleError ? classes.invalidControl : classes.control}>
           <label htmlFor="title">Title</label>

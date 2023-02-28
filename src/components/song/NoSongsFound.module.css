@@ -24,4 +24,8 @@
     font-weight: 600;
     text-decoration: none;
 }
- 
+ @media(max-width : 420px){
+  .nosongs p{
+    font-size: 2rem;
+  }
+ }

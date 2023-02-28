@@ -2,11 +2,11 @@ import Layout from "../layout/Layout";
 import SongItem from "./SongItem";
 import classes from "./SongList.module.css";
 const SongList = (props) => {
-  console.log(props.songs);
   const songs = props.songs.map((song) => {
     return (
       <SongItem
         key={Math.random().toString()}
+        id={song.id}
         title={song.title}
         genre={song.genre}
         duration={song.duration}
