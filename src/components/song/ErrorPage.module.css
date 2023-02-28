@@ -1,0 +1,25 @@
+.error {
+  margin: 15rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: #044559;
+  font-weight: 600;
+}
+.errorResponse {
+  padding: 1rem;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+@media(max-width : 300px){
+    .error{
+        font-size: 1rem;
+    }
+    .errorResponse{
+        font-size: 1.4rem; 
+    }
+}
